@@ -40,7 +40,8 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 
 /* ---------- top bar ---------- */
 .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 10px 18px; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, #11242a, var(--ink)); }
-.brand { display: flex; flex-direction: column; line-height: 1.1; min-width: 150px; }
+.brand { display: flex; align-items: center; gap: 10px; line-height: 1.1; }
+.brand .logo { width: 44px; height: auto; flex: none; }
 .brand h1 { font-family: var(--brand); font-weight: 700; font-size: 31px; letter-spacing: 0.01em; color: var(--brass); line-height: 1; }
 .brand h1 i { font-family: var(--display); font-style: normal; font-weight: 400; color: var(--paper); padding: 0 2px; font-size: 26px; }
 .brand span { color: var(--muted); font-size: 15px; }
@@ -51,7 +52,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 .pill .v { font-size: 18px; font-weight: 700; }
 .pill .d { font-size: 13px; color: var(--good); }
 .pill .d.neg { color: var(--danger); }
-.bar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.bar-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto; }
 .btn { padding: 6px 14px; border: 1px solid var(--line); border-radius: 3px; background: var(--panel-2); font-family: var(--display); font-size: 18px; letter-spacing: 0.02em; }
 .btn[aria-pressed="true"] { border-color: var(--brass); color: var(--brass); }
 .btn:hover { border-color: var(--brass); }
@@ -217,6 +218,14 @@ table.led th { font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.0
 /* ---------- dialogs ---------- */
 .sheetbox:focus { outline: none; }
 .sheetbox { width: min(640px, 100%); background: var(--panel); border: 1px solid var(--line); border-radius: 5px; padding: 22px 24px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); max-height: 100%; overflow-y: auto; }
+.hero { text-align: center; padding: 4px 0 10px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+.hero .logo { width: 118px; height: auto; }
+.sheetbox .hero h2 { font-family: var(--brand); font-weight: 700; font-size: clamp(40px, 9vw, 68px); line-height: 1; letter-spacing: 0.01em; margin: 2px 0 4px; }
+.hero h2 i { font-family: var(--display); font-style: normal; font-weight: 400; color: var(--paper); font-size: 0.8em; padding: 0 4px; }
+.hero .tagline { font-family: var(--display); font-size: 22px; color: var(--muted); letter-spacing: 0.04em; }
+.diffs { display: grid; gap: 6px; }
+.diffs .pickc { align-items: baseline; }
+.diffs b { font-family: var(--display); font-weight: 400; font-size: 20px; color: var(--brass); min-width: 66px; }
 .sheetbox h2 { font-family: var(--display); font-size: 36px; color: var(--brass); letter-spacing: 0.04em; margin-bottom: 8px; }
 .sheetbox h3 { font-family: var(--display); font-size: 23px; letter-spacing: 0.04em; margin: 14px 0 2px; color: var(--brass); }
 .sheetbox p, .sheetbox li { font-family: var(--story); font-size: 16.5px; max-width: 62ch; }
@@ -268,8 +277,7 @@ table.led th { font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.0
 </head>
 <body>
 <header class="bar">
-  <div class="brand"><h1>Crown <i>&amp;</i> Conquest</h1><span id="realm"></span></div>
-  <div class="res" id="res" aria-label="Your stores"></div>
+  <div class="brand"><svg class="logo" viewBox="0 0 120 124" aria-hidden="true"><g transform="rotate(-42 60 72)"><path d="M56 30L60 14L64 30V92H56Z" fill="#c9d0d4" stroke="#525a61" stroke-width="2" stroke-linejoin="round"/><path d="M60 24V90" stroke="#8a949b" stroke-width="1.6"/><rect x="43" y="91" width="34" height="7" rx="3" fill="#d4a94a" stroke="#7a5d1c" stroke-width="2"/><rect x="56.5" y="98" width="7" height="14" fill="#6b4a2e" stroke="#3f2a18" stroke-width="1.5"/><circle cx="60" cy="116" r="5" fill="#d4a94a" stroke="#7a5d1c" stroke-width="2"/></g><g transform="rotate(42 60 72)"><path d="M56 30L60 14L64 30V92H56Z" fill="#c9d0d4" stroke="#525a61" stroke-width="2" stroke-linejoin="round"/><path d="M60 24V90" stroke="#8a949b" stroke-width="1.6"/><rect x="43" y="91" width="34" height="7" rx="3" fill="#d4a94a" stroke="#7a5d1c" stroke-width="2"/><rect x="56.5" y="98" width="7" height="14" fill="#6b4a2e" stroke="#3f2a18" stroke-width="1.5"/><circle cx="60" cy="116" r="5" fill="#d4a94a" stroke="#7a5d1c" stroke-width="2"/></g><path d="M40 38L35 12L49 24L60 6L71 24L85 12L80 38Z" fill="#d4a94a" stroke="#7a5d1c" stroke-width="2.5" stroke-linejoin="round"/><rect x="39" y="37" width="42" height="9" rx="2" fill="#e3bd62" stroke="#7a5d1c" stroke-width="2.5"/><circle cx="60" cy="41.500" r="3" fill="#a8323a"/><circle cx="48" cy="41.500" r="2.200" fill="#2f6f8f"/><circle cx="72" cy="41.500" r="2.200" fill="#2f6f8f"/><circle cx="35" cy="12" r="3" fill="#e3bd62" stroke="#7a5d1c" stroke-width="1.5"/><circle cx="60" cy="6" r="3" fill="#e3bd62" stroke="#7a5d1c" stroke-width="1.5"/><circle cx="85" cy="12" r="3" fill="#e3bd62" stroke="#7a5d1c" stroke-width="1.5"/></svg><div><h1>Crown <i>&amp;</i> Conquest</h1><span id="realm"></span></div></div>
   <div class="bar-actions">
     <button class="btn" id="btnMusic" type="button" aria-pressed="false">Music: off</button>
     <button class="btn" id="btnSound" type="button" aria-pressed="true">Sounds: on</button>
@@ -646,7 +654,20 @@ const seasonName = () => ['Spring', 'Summer', 'Autumn', 'Winter'][(S.turn - 1) %
 function log(k, x, h) { const e = { t: S.turn, k, x }; if (h) e.h = h; S.log.push(e); if (S.log.length > 320) S.log.splice(0, S.log.length - 320); }
 const knows = ci => ci === P || (ci >= 0 && S.civs[ci].met);
 function relLabel(r) { return r >= 60 ? 'devoted' : r >= 30 ? 'friendly' : r >= 10 ? 'cordial' : r > -10 ? 'neutral' : r > -30 ? 'wary' : r > -60 ? 'hostile' : 'hateful'; }
-function qualityLabel(q) { return q >= 1.4 ? 'elite' : q >= 1.2 ? 'veteran' : q >= 1.02 ? 'drilled' : q >= 0.95 ? 'regular' : 'raw'; }
+/* Experience. An army's level is the number of battles its soldiers have fought, averaged over the whole army and rounded.
+   Each level adds 10% to its fighting strength. Internally army.q is that multiplier: 1 + 0.1 x battles. */
+const XP_CAP = 1.8;
+const levelOf = q => Math.max(0, Math.round((q - 1) * 10 + 1e-6));
+function qualityLabel(q) { const l = levelOf(q); return l >= 6 ? 'legendary' : l >= 3 ? 'veteran' : l >= 1 ? 'well-drilled' : 'inexperienced'; }
+const seasoned = q => Math.min(XP_CAP, Math.max(1, q) + 0.1);
+/* Difficulty never touches the battle rules. */
+const DIFF = {
+  squire: { label: 'Squire', cost: 0.8, war: 0.55, grace: 16, dip: -8, swap: -0.1, bad: 0.5, revolt: 1, raid: 0.5, ask: 0.8, never: 0.15 },
+  knight: { label: 'Knight', cost: 1, war: 1, grace: 12, dip: 0, swap: 0, bad: 1, revolt: 0, raid: 1, ask: 1, never: 0.25 },
+  lord: { label: 'Lord', cost: 1.25, war: 1.6, grace: 8, dip: 8, swap: 0.1, bad: 1.7, revolt: -1, raid: 1.7, ask: 1.3, never: 0.35 },
+};
+const diff = () => DIFF[S.diff] || DIFF.knight;
+const revoltLimit = t => Math.max(2, (t.army.n >= t.pop * 0.05 ? 5 : 3) + (t.owner === P && !S.auto ? diff().revolt : 0));
 function bunkerLabel(b) { return ['', 'digging in', 'bunkered', 'breaking camp'][b] || ''; }
 
 /* ---------- new game ---------- */
@@ -664,7 +685,7 @@ function buildState(seed, opts) {
   const r = mulberry(seed ^ 0x51ed27);
   const used = {};
   S = { v: 3, seed, rs: seed * 7 + 13 | 0, turn: 1, terr: [], civs: [], rel: {}, dip: {}, market: Object.assign({}, BASE_PRICE),
-    log: [], queue: [], intel: [], over: null, improv: 0, ties: [] };
+    log: [], queue: [], intel: [], over: null, improv: 0, ties: [], diff: DIFF[opts.diff] ? opts.diff : 'knight' };
   GEO.cells.forEach((c, id) => {
     const lat = c.c[1] / H, x = r();
     let ter;
@@ -733,7 +754,7 @@ function buildState(seed, opts) {
       t.opinion = isCap ? 74 : 62 + Math.round(r() * 8);
       t.army = { n: isCap ? 800 : 300, q: 1, b: 0, fresh: 0 };
     } else {
-      t.army = { n: 200 + Math.round(r() * 5) * 100, q: 0.9, b: 0, fresh: 0 };
+      t.army = { n: 200 + Math.round(r() * 5) * 100, q: 1, b: 0, fresh: 0 };
     }
   });
   for (let a = 0; a < NC; a++) for (let b = a + 1; b < NC; b++) S.rel[dkey(a, b)] = Math.round((r() - 0.5) * 24) + (a === P ? 5 : 0);
@@ -841,7 +862,7 @@ function income(ci) {
   out.money += out.tradeMoney - out.upkeepMoney; out.food -= out.upkeepFood;
   return out;
 }
-const investCost = (c, area) => Math.round((area === 'education' ? 60 : 50) * Math.pow(1.4, c.lv[area]));
+const investCost = (c, area) => Math.round((area === 'education' ? 60 : 50) * Math.pow(1.4, c.lv[area]) * (c.id === P && !S.auto ? diff().cost : 1));
 function price(res, buy, ci) {
   if (res === 'money') return 1;
   const hasTrade = alive().some(o => o.id !== ci && dip(ci, o.id).trade);
@@ -884,18 +905,21 @@ const A = {
     const w = Math.ceil(n * COST.recruitW / 100), m = Math.ceil(n * COST.recruitM / 100);
     if (c.res.weapons < w || c.res.materials < m) return { ok: false, msg: `Raising ${fmt(n)} soldiers needs ${w} weapons and ${m} materials. You have ${fmt(c.res.weapons)} weapons and ${fmt(c.res.materials)} materials, enough for about ${fmt(afford)}.` };
     c.res.weapons -= w; c.res.materials -= m; t.pop -= n; t.drafted += n;
-    mergeArmy(t, n, 0.9, true);
-    return { ok: true, msg: `Raised ${fmt(n)} recruits in ${t.name} (−${w} weapons, −${m} materials). The army there now numbers ${fmt(t.army.n)}.` };
+    const before = levelOf(t.army.q);
+    mergeArmy(t, n, 1, true);
+    const out = { ok: true, msg: `Raised ${fmt(n)} recruits in ${t.name} (−${w} weapons, −${m} materials). The army there now numbers ${fmt(t.army.n)}.` };
+    if (levelOf(t.army.q) < before) out.msg += ` The raw recruits dilute its experience: it is now level ${levelOf(t.army.q)} (${qualityLabel(t.army.q)}).`;
+    return out;
   },
   train(ci, tid) {
     const c = S.civs[ci], t = S.terr[tid];
     if (!t || t.owner !== ci || t.army.n < 1) return { ok: false, msg: 'There is no army of yours there to train.' };
     if (t.trained === S.turn) return { ok: false, msg: `The army in ${t.name} has already drilled this season.` };
-    if (t.army.q >= 1.5) return { ok: false, msg: `The army in ${t.name} is already as well trained as drill can make it.` };
+    if (t.army.q >= 1.1 - 1e-6) return { ok: false, msg: `Drill can teach the army in ${t.name} nothing more. Beyond level 1, only real battles add experience.` };
     const m = Math.ceil(t.army.n * 3 / 100), w = Math.ceil(t.army.n / 100);
     if (c.res.money < m || c.res.weapons < w) return { ok: false, msg: `Training the army in ${t.name} costs ${m} money and ${w} weapons.` };
-    c.res.money -= m; c.res.weapons -= w; t.army.q = Math.min(1.5, t.army.q + 0.1); t.trained = S.turn;
-    return { ok: true, msg: `The army in ${t.name} drills hard (−${m} money, −${w} weapons). They are now ${qualityLabel(t.army.q)} troops.` };
+    c.res.money -= m; c.res.weapons -= w; t.army.q = Math.min(1.1, Math.max(1, t.army.q) + 0.1); t.trained = S.turn;
+    return { ok: true, msg: `The army in ${t.name} drills hard (−${m} money, −${w} weapons). They are now level ${levelOf(t.army.q)} (${qualityLabel(t.army.q)}).` };
   },
   move(ci, from, to, n) {
     const a = S.terr[from], b = S.terr[to];
@@ -979,7 +1003,7 @@ function defenceOf(t, armyN, armyQ) {
 }
 function odds(sa, sd) { if (sd <= 0) return 1; const s = sa / (sa + sd); return clamp(s * s / (s * s + (1 - s) * (1 - s)), 0.06, 0.94); }
 function battle(ci, from, to, n) {
-  const a = S.terr[from], d = S.terr[to], defOwner = d.owner, qa = a.army.q, defWho = holder(d);
+  const a = S.terr[from], d = S.terr[to], defOwner = d.owner, qa = a.army.q, dq = d.army.q, defWho = holder(d);
   const def = defenceOf(d), sa = n * qa, sd = def.strength, p = odds(sa, sd), defN = d.army.n;
   a.army.n -= n;
   const win = sd <= 0 || rnd() < p;
@@ -993,21 +1017,21 @@ function battle(ci, from, to, n) {
   if (win) {
     if (defOwner >= 0 && dLeft > 0) {
       const opts = d.nb.map(x => S.terr[x]).filter(x => x.owner === defOwner).sort((x, y) => y.army.n - x.army.n);
-      if (opts.length) { mergeArmy(opts[0], dLeft, d.army.q, true); retreat = opts[0].name; }
+      if (opts.length) { mergeArmy(opts[0], dLeft, seasoned(dq), true); retreat = opts[0].name; }
     }
-    d.army = { n: aLeft, q: Math.min(1.6, qa + 0.05), b: 0, fresh: aLeft };
+    d.army = { n: aLeft, q: seasoned(qa), b: 0, fresh: aLeft };
   } else {
-    mergeArmy(a, aLeft, qa, true);
-    d.army.n = dLeft; d.army.q = Math.min(1.6, d.army.q + 0.03);
+    mergeArmy(a, aLeft, seasoned(qa), true);
+    d.army.n = dLeft; d.army.q = seasoned(dq);
   }
   const att = ci === P ? 'your' : S.civs[ci].short + '\'s', defName = defOwner === P ? 'your' : defOwner < 0 ? (d.rebelOf != null ? 'the rebels\'' : 'the free militia\'s') : S.civs[defOwner].short + '\'s';
   const Att = att.charAt(0).toUpperCase() + att.slice(1);
   const extras = [def.bun === 1.6 ? 'bunkered' : def.bun > 1 ? 'half dug-in' : '', def.ter > 1 ? TERRAINS[d.terrain].label.toLowerCase() : '', def.capB > 1 ? 'capital walls' : '', def.militia ? `${fmt(def.militia)} local militia` : ''].filter(Boolean).join(', ');
   let text;
   if (sd <= 0) text = `${Att} ${fmt(n)} soldiers march into undefended ${d.name} and raise their banner.`;
-  else text = `Battle of ${d.name}: ${att} ${fmt(n)} ${qualityLabel(qa)} soldiers from ${a.name} assault ${defName} ${fmt(defN)} defenders${extras ? ' (' + extras + ')' : ''}. Odds of success were ${Math.round(p * 100)}%. ` +
+  else text = `Battle of ${d.name}: ${att} ${fmt(n)} ${qualityLabel(qa)} soldiers (level ${levelOf(qa)}) from ${a.name} assault ${defName} ${fmt(defN)} ${qualityLabel(dq)} defenders (level ${levelOf(dq)})${extras ? ' (' + extras + ')' : ''}. Odds of success were ${Math.round(p * 100)}%. ` +
     (win ? (ci === P ? `Victory! You take ${d.name}. ` : `${S.civs[ci].short} takes ${d.name}. `) : (ci === P ? `Defeat. Your survivors fall back to ${a.name}. ` : 'The assault is thrown back. ')) +
-    `Losses: attackers ${fmt(aLoss)}, defenders ${fmt(dLoss)}.` + (win && retreat ? ` The beaten garrison retreats to ${retreat}.` : win && defOwner >= 0 && dLeft > 0 ? ' The beaten garrison scatters.' : '');
+    `Losses: attackers ${fmt(aLoss)}, defenders ${fmt(dLoss)}. Survivors on both sides gain a level of experience.` + (win && retreat ? ` The beaten garrison retreats to ${retreat}.` : win && defOwner >= 0 && dLeft > 0 ? ' The beaten garrison scatters.' : '');
   const rep = { win, p, n, aLoss, dLoss, defN, from, to, attacker: ci, defender: defOwner, text, folk: defOwner < 0 && d.rebelOf == null };
   if (ci === P || defOwner === P) {
     log('battle', text);
@@ -1040,7 +1064,7 @@ function folkReact(t) {
     const weak = mine.slice().sort((a, b) => defenceOf(a).strength - defenceOf(b).strength)[0];
     const send = Math.floor(o.army.n * 0.75), pWin = odds(send * o.army.q, defenceOf(weak).strength);
     let wJoin = (myStr > their * 2.5 ? 4 : myStr > their * 1.3 ? 1.5 : 0.4) * (avgOp < 45 ? 0.3 : 1); if (asked || S.queue.some(q => q.kind === 'envoy' && q.terr === o.id)) wJoin = 0;
-    let wAtk = send >= 100 ? (pWin >= 0.5 ? 4 : pWin >= 0.33 ? 1.3 : 0) : 0; if (S.raids.some(r => r.from === o.id)) wAtk = 0;
+    let wAtk = send >= 100 ? (pWin >= 0.5 ? 4 : pWin >= 0.33 ? 1.3 : 0) : 0; wAtk *= diff().raid; if (S.raids.some(r => r.from === o.id)) wAtk = 0;
     const wArm = 3, wNone = 0.8;
     let x = rnd() * (wJoin + wAtk + wArm + wNone);
     if ((x -= wJoin) < 0) { asked = true; o.seen = true; S.queue.push({ kind: 'envoy', terr: o.id, pending: { type: 'join' } }); }
@@ -1056,9 +1080,9 @@ function raid(a, d, n) {
   let retreat = null;
   if (win) {
     const home = d.nb.map(x => S.terr[x]).filter(x => x.owner === prev).sort((x, y) => y.army.n - x.army.n)[0];
-    if (home && dLeft > 0) { mergeArmy(home, dLeft, d.army.q, true); retreat = home.name; }
-    d.army = { n: aLeft, q: a.army.q, b: 0, fresh: 0 };
-  } else { a.army.n += aLeft; d.army.n = dLeft; }
+    if (home && dLeft > 0) { mergeArmy(home, dLeft, seasoned(d.army.q), true); retreat = home.name; }
+    d.army = { n: aLeft, q: seasoned(a.army.q), b: 0, fresh: 0 };
+  } else { mergeArmy(a, aLeft, seasoned(a.army.q), false); d.army.n = dLeft; d.army.q = seasoned(d.army.q); }
   if (prev === P) log('battle', `Raid on ${d.name}: about ${fmt(n)} free fighters from ${a.name} fall on your ${fmt(defN)} defenders${d.army.b === 2 && !win ? ' (bunkered)' : ''}. Their odds were ${Math.round(p * 100)}%. ` +
     (win ? `They overrun the town and ${d.name} is free again.${retreat ? ' Your survivors retreat to ' + retreat + '.' : ' Your garrison is lost.'}` : 'You beat them back.') + ` Losses: raiders ${fmt(aLoss)}, defenders ${fmt(dLoss)}.`);
   if (win) toFolk(d, prev);
@@ -1141,11 +1165,11 @@ function willing(ci) {
   const c = S.civs[ci], r = rel(P, ci), d = dip(P, ci), pp = power(P), cp = power(ci);
   const yes = why => ({ ok: true, why: why || '' }), no = why => ({ ok: false, why });
   const out = { join: {} };
-  const tThr = Math.round(10 - 25 * c.trade);
+  const tThr = Math.round(10 - 25 * c.trade + diff().dip);
   out.trade_deal = d.war ? no('you are at war') : d.trade ? no('a trade agreement is already in force') : r >= tThr ? yes() : no(`relations are ${r}; they would need to reach ${tThr}`);
   const myEnemies = enemiesOf(P), shared = myEnemies.some(e => dip(ci, e).war);
   const alliedToEnemy = myEnemies.find(e => dip(ci, e).pact);
-  const pThr = Math.round(50 - (shared ? 15 : 0) - (pp > cp * 1.8 ? 8 : 0) + (c.aggr > 0.6 && pp < cp * 0.7 ? 10 : 0));
+  const pThr = Math.round(50 - (shared ? 15 : 0) - (pp > cp * 1.8 ? 8 : 0) + (c.aggr > 0.6 && pp < cp * 0.7 ? 10 : 0) + diff().dip);
   out.military_pact = d.war ? no('you are at war') : d.pact ? no('a pact is already in force') : alliedToEnemy != null ? no(`they are allied to your enemy ${S.civs[alliedToEnemy].short}`) : r >= pThr ? yes() : no(`relations are ${r}; they would need to reach ${pThr}`);
   if (!d.war) out.peace = no('you are not at war');
   else {
@@ -1166,7 +1190,7 @@ function exchangeOk(ci, gives, gets) {
   for (const k of RES) { if ((+gives[k] || 0) > me.res[k]) return { ok: false, why: `you do not have ${fmt(gives[k])} ${k}` }; if ((+gets[k] || 0) > c.res[k] * 0.8) return { ok: false, why: `they cannot spare that much ${k}` }; }
   const vg = value(gives), vr = value(gets);
   if (vg <= 0 && vr <= 0) return { ok: false, why: 'nothing was offered' };
-  const f = clamp(1.2 - rel(P, ci) / 200 - (d.trade ? 0.1 : 0), 0.85, 1.6);
+  const f = clamp(1.2 - rel(P, ci) / 200 - (d.trade ? 0.1 : 0) + diff().swap, 0.8, 1.7);
   return vg >= vr * f ? { ok: true } : { ok: false, why: `they value what you offer at ${Math.round(vg)} and what you ask at ${Math.round(vr * f)}` };
 }
 function gift(ci, res, n) {
@@ -1177,6 +1201,56 @@ function gift(ci, res, n) {
   const room = Math.max(0, 15 - c.gifted), gain = Math.min(room, value({ [res]: n }) / 5);
   c.gifted += gain; addRel(P, ci, gain);
   return { ok: true, msg: `You send ${fmt(n)} ${res} to ${c.short}. ${gain >= 1 ? `Relations improve by ${Math.round(gain)} (now ${rel(P, ci)}).` : 'They accept it, but more gifts this season will not move them further.'}` };
+}
+
+/* ---------- diplomats to the free folk ---------- */
+const FOLK_WANT = { plains: 'weapons', valley: 'materials', coast: 'materials', forest: 'food', hills: 'food', mountains: 'food', steppe: 'materials', desert: 'food', marsh: 'weapons' };
+const FOLK_NEVER = ['Their elders swore on the graves of their founders never to bend the knee to any crown', 'Their priests teach that a people who accept a king are cursed for seven generations',
+  'A king drove them from their old homes long ago, and they have sworn it will not happen twice', 'Their council laughed your diplomats out of the hall and said they would sooner burn their own roofs than fly a foreign banner'];
+function joinKingdom(t) {
+  const men = t.army.n;
+  t.owner = P; t.army.fresh = men; t.army.b = 0; t.opinion = 64; t.since = S.turn; t.unrest = 0; t.intel = null; delete t.rebelOf;
+  if (S.raids) S.raids = S.raids.filter(r => r.from !== t.id);
+  S.queue = S.queue.filter(q => !(q.kind === 'envoy' && q.terr === t.id));
+  reveal(); checkVictory();
+  return men;
+}
+function diplomats(tid, offer) {
+  const me = S.civs[P], t = S.terr[tid], no = msg => ({ ok: false, msg });
+  if (!t || !t.seen) return no('Your diplomats cannot find a land that is not on your maps.');
+  if (t.owner === P) return no(`${t.name} is already yours.`);
+  if (t.owner >= 0) return no(`${t.name} belongs to ${S.civs[t.owner].short}. Diplomats can win over free folk only; to deal with a kingdom, request an audience with its ruler.`);
+  if (t.rebelOf === P) return no(`The rebels of ${t.name} rose against you with weapons in their hands. No words will bring them back; you must retake it by force.`);
+  const mine = t.nb.map(n => S.terr[n]).filter(x => x.owner === P);
+  if (!mine.length) return no(`${t.name} does not border your kingdom. Free folk will only treat with a neighbour.`);
+  if (t.dipTurn === S.turn) return no(`Your diplomats have already been to ${t.name} this season. Send them again next turn.`);
+  const give = {}; RES.forEach(k => { give[k] = Math.max(0, Math.round(+((offer || {})[k]) || 0)); });
+  const short = RES.filter(k => give[k] > me.res[k]);
+  if (short.length) return no(`You cannot offer what you do not have: you are short of ${short.join(' and ')}.`);
+  t.dipTurn = S.turn;
+  if (!t.folk) t.folk = { never: rnd() < diff().never, why: Math.floor(rnd() * FOLK_NEVER.length), k: 0.8 + rnd() * 0.5 };
+  if (t.folk.never) {
+    t.folk.known = true;
+    return no(`Your diplomats return from ${t.name} with your gifts untouched. ${FOLK_NEVER[t.folk.why]}. They will never join you willingly; if you want ${t.name}, you must take it by force.`);
+  }
+  const want = FOLK_WANT[t.terrain], all = owned(P), avgOp = all.reduce((a, x) => a + x.opinion, 0) / all.length;
+  const myStr = Math.max(...mine.map(x => x.army.n * x.army.q)), their = t.army.n * t.army.q, weak = myStr < their, sour = avgOp < 45;
+  const ask = (t.pop / 1000 * 8 + t.army.n * 0.2) * t.folk.k * diff().ask * (myStr > their * 2.5 ? 0.75 : weak ? 1.3 : 1) * (sour ? 1.3 : 1);
+  const worth = RES.reduce((a, k) => a + give[k] * (k === 'money' ? 1 : S.market[k]) * (k === want ? 1.5 : 1), 0);
+  const list = RES.filter(k => give[k] > 0).map(k => `${fmt(give[k])} ${k}`).join(' and ');
+  if (worth >= ask) {
+    RES.forEach(k => { me.res[k] -= give[k]; });
+    const men = joinKingdom(t);
+    return { ok: true, msg: `The elders of ${t.name} accept your offer of ${list} and raise your banner. ${t.name} joins your kingdom without a blow, and its ${fmt(men)} fighters are now your soldiers.` };
+  }
+  const r = worth / ask, why = [];
+  if (worth <= 0) why.push(`Your diplomats came empty-handed, and the elders of ${t.name} told them that words are wind. An offer of money, food, materials or weapons might move them.`);
+  else why.push(`The elders of ${t.name} refuse your offer of ${list}. ` + (r < 0.4 ? 'It is far too little; they would want several times as much.' : r < 0.75 ? 'It is not enough; they would want roughly half as much again, or more.' : 'They were tempted. A little more would probably settle it.'));
+  if (!give[want]) why.push(`What they lack most is ${want}, and they would value it above anything else.`);
+  if (weak) why.push('They also doubt that the garrisons on their border are strong enough to protect them.');
+  if (sour) why.push('They have heard how unhappy your own subjects are, and it makes them drive a harder bargain.');
+  if (worth > 0) why.push('Your gifts are returned.');
+  return no(why.join(' '));
 }
 
 /* ---------- intelligence ---------- */
@@ -1274,7 +1348,7 @@ function beginTurn() {
   S.terr.forEach(t => {
     if (t.owner < 0) return;
     if (t.opinion < 30 && S.turn - t.since >= 1) t.unrest = (t.unrest || 0) + 1; else t.unrest = 0;
-    const prev = t.owner, pc = S.civs[prev], limit = t.army.n >= t.pop * 0.05 ? 5 : 3;
+    const prev = t.owner, pc = S.civs[prev], limit = revoltLimit(t);
     if (prev === P && !S.auto && t.unrest === limit - 1) log('event', `For ${t.unrest > 1 ? 'yet another' : 'a whole'} season the people of ${t.name} have cursed your name in the taverns (opinion ${Math.round(t.opinion)} of 100). If nothing changes by next season, they will take up their scythes.`, `Unrest in ${t.name}`);
     if (t.unrest < limit || rnd() >= 0.7) return;
     const home = t.nb.map(n => S.terr[n]).filter(x => x.owner === prev).sort((x, y) => y.army.n - x.army.n)[0];
@@ -1282,7 +1356,7 @@ function beginTurn() {
     if (home && garrison) mergeArmy(home, Math.floor(garrison * 0.8), t.army.q, false);
     if (prev === P) log('event', `Scythes, pitchforks and stolen spears have driven your officials out of ${t.name}. About ${fmt(rebels)} rebels now hold the territory against you, and it will not return unless you retake it in battle.` + (garrison ? (home ? ` Your garrison fought its way out to ${home.name}, losing one man in five.` : ' Your garrison was overwhelmed.') : ''), `Peasant revolt in ${t.name}`);
     else if (knows(prev) && t.seen) log('news', `${t.name} has risen in revolt against ${pc.short}.`);
-    t.owner = -1; t.rebelOf = prev; t.unrest = 0; t.army = { n: rebels, q: 0.85, b: 0, fresh: 0 }; t.opinion = 55; t.since = S.turn;
+    t.owner = -1; t.rebelOf = prev; t.unrest = 0; t.army = { n: rebels, q: 1, b: 0, fresh: 0 }; t.opinion = 55; t.since = S.turn;
     const left = owned(prev);
     if (!left.length) eliminate(prev, -1);
     else if (pc.capital === t.id) { left.sort((x, y) => y.pop - x.pop); pc.capital = left[0].id; if (prev === P) log('news', `Your court has fled to ${left[0].name}.`); }
@@ -1373,7 +1447,7 @@ function botTurn(ci) {
     n = Math.min(n, Math.floor((spot.pop * 0.08 - spot.drafted) / 100) * 100);
     if (n >= 100) A.recruit(ci, spot.id, n);
   }
-  if (c.res.money > 140) { const big = mine.slice().sort((a, b) => b.army.n - a.army.n)[0]; if (big.army.q < 1.3) A.train(ci, big.id); }
+  if (c.res.money > 140) { const big = mine.slice().sort((a, b) => b.army.n - a.army.n)[0]; if (big.army.q < 1.1 - 1e-6) A.train(ci, big.id); }
   // --- attacks
   const thr = 0.64 - 0.1 * c.aggr; let attacks = 0; const maxA = wars.length ? 2 : 1;
   if (c.plan) {
@@ -1438,13 +1512,13 @@ function botDiplomacy(ci) {
     if (!d.pact && r >= 52 && alliesOf(ci).length < 2 && !conflict && rnd() < 0.14) { if (toHuman) propose(ci, 'military_pact'); else if (alliesOf(j).length < 2) sign(ci, j, 'military_pact'); }
     const pc = power(ci), pj = power(j), wars = enemiesOf(ci).length, grudge = S.turn - c.grudge < 4;
     const dominant = owned(j).length > L * 0.4;
-    if (!d.pact && d.truce <= S.turn && bordering(ci, j) && wars < (c.aggr > 0.6 ? 2 : 1) && (!toHuman || S.turn >= 12)
+    if (!d.pact && d.truce <= S.turn && bordering(ci, j) && wars < (c.aggr > 0.6 ? 2 : 1) && (!toHuman || S.turn >= diff().grace)
       && (pc > pj * (grudge ? 1.0 : 1.25) || (dominant && pc > pj * 0.6)) && (r < -5 || (c.aggr > 0.7 && r < 25) || dominant)
       && (dominant || enemiesOf(j).length < (toHuman && S.turn < 25 ? 1 : 2))) {
       const prob = 0.05 + c.aggr * 0.18 + (r < -40 ? 0.15 : 0) + (grudge ? 0.25 : 0) - (d.trade ? 0.08 : 0) + (dominant ? 0.1 : 0);
-      if (rnd() < prob * (toHuman && S.turn < 30 ? 0.6 : 1)) { declareWar(ci, j); continue; }
+      if (rnd() < prob * (toHuman ? diff().war * (S.turn < 30 ? 0.6 : 1) : 1)) { declareWar(ci, j); continue; }
     }
-    if (toHuman && !d.pact && c.aggr > 0.5 && S.turn >= 5 && bordering(ci, j) && pc > pj * 1.5 && r < 15 && rnd() < 0.09) {
+    if (toHuman && !d.pact && c.aggr > 0.5 && S.turn >= 5 && bordering(ci, j) && pc > pj * 1.5 && r < 15 && rnd() < 0.09 * diff().war) {
       const amount = Math.max(15, Math.round(Math.min(S.civs[P].res.money * 0.3, 80) / 5) * 5);
       propose(ci, 'tribute', { amount });
     }
@@ -1457,6 +1531,7 @@ function randomEvent() {
   if (!mine.length || S.turn < 3 || rnd() > 0.32) return;
   const season = (S.turn - 1) % 4, opts = ['festival', 'festival', 'fire', 'fire', 'caravan', 'ore', 'sickness', 'veterans'];
   if (season === 1 || season === 2) opts.push('harvest', 'harvest', 'harvest');
+  if (diff().bad > 1) opts.push('fire', 'sickness', 'sickness'); else if (diff().bad < 1) { opts.splice(opts.indexOf('fire'), 1); opts.push('festival', 'caravan'); }
   let kind = pick(opts.filter(x => x !== S.lastEvent)), t = pick(mine);
   if (kind === 'veterans' && t.army.n < 100) kind = 'caravan';
   if (kind === 'ore') t = mine.find(x => x.terrain === 'hills' || x.terrain === 'mountains') || t;
@@ -1479,8 +1554,8 @@ function randomEvent() {
     const lost = Math.round(t.pop * (0.04 + rnd() * 0.03) / 10) * 10; t.pop -= lost; bump(t, -3);
     log('event', `A fever passes through ${t.name}. ${fmt(lost)} people are buried and the town is in mourning. Opinion there falls by 3.`, `Fever in ${t.name}`);
   } else {
-    t.army.q = Math.min(1.5, t.army.q + 0.06);
-    log('event', `A scarred veteran of foreign wars has settled in ${t.name} and taken to drilling your garrison at dawn. The soldiers there fight better for it.`, 'An old soldier\'s school');
+    t.army.q = seasoned(t.army.q);
+    log('event', `A scarred veteran of foreign wars has settled in ${t.name} and taken to drilling your garrison at dawn. His lessons are worth a battle: the soldiers there gain a level of experience (now level ${levelOf(t.army.q)}, ${qualityLabel(t.army.q)}).`, 'An old soldier\'s school');
   }
 }
 function endTurn() {
@@ -1591,11 +1666,8 @@ function resolvePending(scene, accept) {
     const t = S.terr[scene.terr];
     if (t.owner >= 0) return { ok: false, msg: `${t.name} is no longer free to offer itself.` };
     if (!accept) { t.army.n += 80; return { ok: true, msg: `You send the elder home. ${t.name} stays free, and warier than before.` }; }
-    const men = Math.floor(t.army.n / 20) * 10;
-    t.owner = P; t.army = { n: men, q: 0.9, b: 0, fresh: men }; t.opinion = 64; t.since = S.turn; t.unrest = 0; t.intel = null;
-    if (S.raids) S.raids = S.raids.filter(r => r.from !== t.id);
-    reveal(); checkVictory();
-    return { ok: true, msg: `${t.name} joins your kingdom without a blow. ${fmt(men)} of its fighters enter your service and the rest go home to their fields.` };
+    const men = joinKingdom(t);
+    return { ok: true, msg: `${t.name} joins your kingdom without a blow, and its ${fmt(men)} fighters are now your soldiers.` };
   }
   const ci = scene.civ, c = S.civs[ci], me = S.civs[P];
   if (!c.alive) return { ok: false, msg: `${c.short} is no more.` };
@@ -1627,7 +1699,7 @@ function counsel() {
   const low = mine.filter(t => t.opinion < 40).sort((a, b) => a.opinion - b.opinion)[0];
   const lost = S.terr.filter(t => t.rebelOf === P && t.owner < 0)[0];
   if (lost) out.push(`${lost.name} is in the hands of rebels. Only an army can bring it back.`);
-  if (low) out.unshift(`${low.name} is restless (opinion ${Math.round(low.opinion)} of 100). If it stays below 30 for three seasons running they will revolt. Visit its citizens, lower taxes, or spend on something they will love.`);
+  if (low) out.unshift(`${low.name} is restless (opinion ${Math.round(low.opinion)} of 100). If it stays below 30 for ${revoltLimit(low)} seasons running they will revolt. Visit its citizens, lower taxes, or spend on something they will love.`);
   const cheap = AREAS.map(a => [a, investCost(me, a)]).sort((x, y) => x[1] - y[1])[0];
   if (me.res.money >= cheap[1] * 1.3) out.push(`The treasury holds ${fmt(me.res.money)} money doing nothing. An investment in ${cheap[0]} costs ${cheap[1]} and pays back every turn.`);
   const rec = Math.floor(Math.min(me.res.weapons / COST.recruitW, me.res.materials / COST.recruitM)) * 100;
@@ -1662,8 +1734,8 @@ function warCounsel() {
   if (known) out.push(`By our last count, an assault on ${known.d.name} (${holder(known.d)}) from ${known.a.name} with every free soldier would succeed about ${Math.round(known.p * 100)} times in 100.`);
   const blind = targets.filter(t => t.p == null && t.d.intel == null)[0];
   if (blind) out.push(`We do not know what guards ${blind.d.name} (${holder(blind.d)}). Send scouts before committing men.`);
-  const raw = mine.filter(t => t.army.n >= 200 && t.army.q < 1).sort((x, y) => y.army.n - x.army.n)[0];
-  if (raw) out.push(`The troops in ${raw.name} are ${qualityLabel(raw.army.q)}. Training would make each man count for more.`);
+  const raw = mine.filter(t => t.army.n >= 200 && t.army.q < 1.1 - 1e-6).sort((x, y) => y.army.n - x.army.n)[0];
+  if (raw) out.push(`The troops in ${raw.name} are ${qualityLabel(raw.army.q)}. Drill would raise them to level 1; after that only battle teaches.`);
   const rep = S.intel.filter(i => S.turn - i.turn <= 1 && /Spy report/.test(i.x)).pop();
   if (rep) out.push('Our latest ' + rep.x.charAt(0).toLowerCase() + rep.x.slice(1) + ' Spies are sometimes fed lies, so weigh it.');
   out.push(`In all we field ${fmt(armyTotal(P))} soldiers.`);
@@ -1677,12 +1749,12 @@ function digest() {
   L.push(`Turn ${S.turn} (${seasonName()}). The player is ${me.leader}, ruler of the ${me.name} ("${me.short}"). ${loreOf(P).join(' ')}`);
   L.push(`Stores: money ${r1(me.res.money)} (${sg(inc.money)}/turn), food ${r1(me.res.food)} (${sg(inc.food)}/turn), materials ${r1(me.res.materials)} (${sg(inc.materials)}/turn), weapons ${r1(me.res.weapons)} (${sg(inc.weapons)}/turn). Tax rate ${me.tax}%${me.taxTurn === S.turn ? ' (already changed this turn)' : ''}.`);
   L.push('Development levels and cost of the next level in money: ' + AREAS.map(a => `${a} ${me.lv[a]} (${investCost(me, a)})`).join(', ') + '.');
-  L.push(`Costs: recruit 100 soldiers = ${COST.recruitW} weapons + ${COST.recruitM} materials (max 8% of a territory's people per turn); train an army = 3 money + 1 weapon per 100 soldiers; scout one territory ${COST.scoutT} money, scout a whole civilization ${COST.scoutC}; explore ${COST.explore}; spy ${COST.spy}; move capital ${COST.capMoney} money + ${COST.capMat} materials.`);
+  L.push(`Costs: recruit 100 soldiers = ${COST.recruitW} weapons + ${COST.recruitM} materials (max 8% of a territory's people per turn); drilling an army (raises experience from level 0 to level 1 only; higher levels come only from fighting battles; each level adds 10% strength; new recruits dilute it) = 3 money + 1 weapon per 100 soldiers; sending diplomats to a bordering independent territory is free apart from what is offered; scout one territory ${COST.scoutT} money, scout a whole civilization ${COST.scoutC}; explore ${COST.explore}; spy ${COST.spy}; move capital ${COST.capMoney} money + ${COST.capMat} materials.`);
   L.push('Market (money per unit, buy/sell): ' + ['food', 'materials', 'weapons'].map(k => `${k} ${price(k, true, P).toFixed(1)}/${price(k, false, P).toFixed(1)}`).join(', ') + '.');
   L.push('PLAYER TERRITORIES:');
   const tag = n => { const o = S.terr[n]; return `${o.seen ? o.name : 'unexplored land'} (${!o.seen ? '?' : o.owner === P ? 'yours' : o.owner < 0 ? (o.rebelOf === P ? 'REBELS who rose against the player, attackable' : 'independent') : S.civs[o.owner].short + (dip(P, o.owner).war ? ', AT WAR' : dip(P, o.owner).pact ? ', ally' : '')})`; };
   owned(P).forEach(t => {
-    L.push(`- ${t.name}${me.capital === t.id ? ' [CAPITAL]' : ''}: ${t.terrain}, ${fmt(t.pop)} people, opinion ${r1(t.opinion)}/100, army ${fmt(t.army.n)} (${qualityLabel(t.army.q)}${t.army.b ? ', ' + bunkerLabel(t.army.b) : ''}; ${fmt(t.army.b ? 0 : t.army.n - t.army.fresh)} free to march). Borders: ${t.nb.map(tag).join('; ')}.`);
+    L.push(`- ${t.name}${me.capital === t.id ? ' [CAPITAL]' : ''}: ${t.terrain}, ${fmt(t.pop)} people, opinion ${r1(t.opinion)}/100, army ${fmt(t.army.n)} (experience level ${levelOf(t.army.q)}, ${qualityLabel(t.army.q)}${t.army.b ? ', ' + bunkerLabel(t.army.b) : ''}; ${fmt(t.army.b ? 0 : t.army.n - t.army.fresh)} free to march). Borders: ${t.nb.map(tag).join('; ')}.`);
   });
   const mineIds = new Set(owned(P).map(t => t.id));
   const known = S.terr.filter(t => t.seen && t.owner !== P);
@@ -1820,6 +1892,7 @@ function playerAct(a, scene) {
         log('news', `You have ended your ${pact ? 'military pact' : 'trade agreement'} with ${c.short}.`);
         return { ok: true, msg: `Your ${pact ? 'military pact' : 'trade agreement'} with ${c.short} is ended. Relations fall to ${rel(P, c.id)}.` };
       }
+      case 'diplomats': return diplomats(needT(a.territory).id, a.offer);
       case 'gift': return gift(needC(a.civ).id, a.resource, a.amount);
       case 'meet': {
         const who = norm(a.who);
@@ -1912,12 +1985,14 @@ const Game = {
   get state() { return S; }, get geo() { return GEO; },
   load(st) {
     S = st; GEO = makeGeometry(st.seed);
+    if (!DIFF[S.diff]) S.diff = 'knight';
+    S.terr.forEach(t => { t.army.q = clamp(t.army.q, 1, XP_CAP); });   // armies from older saves start on the new experience scale
     const me = S.civs && S.civs[P];   // games begun under the old titles carry on under the new ones
     if (me) { me.name = me.name.replace(/^Empire of /, 'Kingdom of '); me.leader = me.leader.replace(/^Emperor /, 'King '); }
     return GEO.ok;
   },
   newGame, endTurn, playerAct, sceneOpen, resolvePending, citizenChoice, digest, counsel, warCounsel, willing, status, income, terrYield,
-  investCost, price, owned, dip, rel, loreOf, holder, relLabel, qualityLabel, bunkerLabel, armyTotal, power, enemiesOf, alliesOf, seasonName, findTerr, findCiv,
+  investCost, levelOf, revoltLimit, DIFF, FOLK_WANT, price, owned, dip, rel, loreOf, holder, relLabel, qualityLabel, bunkerLabel, armyTotal, power, enemiesOf, alliesOf, seasonName, findTerr, findCiv,
   estimate, log, checkVictory, TERRAINS, STATUS_LABEL, COST, AREAS, RES, BOTS, PETITIONS, fmt, sg,
 };
 if (typeof module !== 'undefined') module.exports = Game;
@@ -1973,6 +2048,7 @@ const ORDER_SPEC = `ORDERS YOU MAY RETURN (JSON objects, each with a "type"):
 {"type":"propose","deal":"peace|trade_deal|military_pact","civ":"name"}   (a quick formal offer; the other court answers yes or no)
 {"type":"end_deal","deal":"trade_deal|military_pact","civ":"name"}
 {"type":"gift","civ":"name","resource":"money|food|materials|weapons","amount":number}
+{"type":"diplomats","territory":"name of an independent territory bordering the player","offer":{"money":0,"food":0,"materials":0,"weapons":0}}   (asks free folk to join the kingdom peacefully in return for the offer; the game decides their answer and gives their reason)
 {"type":"meet","who":"a civilization's name | advisor | general | citizens","territory":"name, for citizens"}   (opens a live face-to-face conversation; use it when the player wants to talk, haggle, persuade, threaten or listen)
 {"type":"improvise","title":"short name","costs":{"money":0,"food":0,"materials":0,"weapons":0},"chance":0.2-0.95,"effects":[...],"success":"one sentence if it works","failure":"one sentence if it fails"}
    improvise is for any creative order the list above does not cover (festivals, public works, propaganda, bribes, royal weddings, sabotage, rumours, amnesties, monuments...).
@@ -2122,7 +2198,7 @@ THE RULER NOW SAYS: """${text.slice(0, 1200)}"""`;
 }
 
 /* ---------- simple typed commands, used whenever the storyteller is unavailable ---------- */
-const HELP_TEXT = 'Simple commands I understand without Claude: "recruit 300 in Oakmere", "move 400 from Oakmere to Stonehollow", "attack Grimfen from Oakmere with 600", "bunker Oakmere", "leave bunkers Oakmere", "train Oakmere", "taxes to 25", "invest in agriculture", "buy 30 food", "sell 20 weapons", "scout Grimfen", "explore", "spy on Kharsa", "declare war on Kharsa", "propose peace to Kharsa", "trade agreement with Lysandra", "pact with Aurun", "gift 30 money to Norvald", "hold a festival in Oakmere", "move capital to Brightwater", "talk to my advisor", "talk to my general", "visit citizens of Oakmere", "meet Lysandra", "end turn".';
+const HELP_TEXT = 'Simple commands I understand without Claude: "recruit 300 in Oakmere", "move 400 from Oakmere to Stonehollow", "attack Grimfen from Oakmere with 600", "bunker Oakmere", "leave bunkers Oakmere", "train Oakmere", "taxes to 25", "invest in agriculture", "buy 30 food", "sell 20 weapons", "scout Grimfen", "explore", "spy on Kharsa", "declare war on Kharsa", "propose peace to Kharsa", "trade agreement with Lysandra", "pact with Aurun", "gift 30 money to Norvald", "send diplomats to Grimfen offering 40 money and 20 food", "hold a festival in Oakmere", "move capital to Brightwater", "talk to my advisor", "talk to my general", "visit citizens of Oakmere", "meet Lysandra", "end turn".';
 function parseOffline(text, sceneCiv) {
   const s = ' ' + norm(text) + ' ', has = re => re.test(s);
   const nm = s.match(/ (\d[\d ]*\d|\d)(?= )/), n = nm ? +nm[1].replace(/ /g, '') : null;
@@ -2134,6 +2210,11 @@ function parseOffline(text, sceneCiv) {
   const cn = civ ? civ.short : null, t0 = terrs[0] ? terrs[0].name : null;
   if (has(/ (end|finish|next|pass) (the |my )?turn /)) return one({ type: 'end_turn' });
   if (has(/ help /) || has(/ what can i /)) return { say: HELP_TEXT, actions: [] };
+  if (has(/ (diplomat|diplomats|envoy|envoys|emissary|emissaries|ambassador|ambassadors) /) && terrs.length) {
+    const offer = {}, re = / (\d+) (money|gold|coin|coins|food|grain|materials|material|timber|weapons|weapon|arms)(?= )/g; let m;
+    while ((m = re.exec(s))) { const k = /money|gold|coin/.test(m[2]) ? 'money' : /food|grain/.test(m[2]) ? 'food' : /material|timber/.test(m[2]) ? 'materials' : 'weapons'; offer[k] = (offer[k] || 0) + +m[1]; re.lastIndex--; }
+    return one({ type: 'diplomats', territory: (terrs.find(t => t.owner < 0) || terrs[0]).name, offer });
+  }
   if (has(/ declare war | go to war | wage war /) && cn) return one({ type: 'declare_war', civ: cn });
   if (has(/ (peace|truce|ceasefire) /) && cn) return one({ type: 'propose', deal: 'peace', civ: cn });
   if (has(/ trade (deal|agreement|treaty|pact) /) && cn) return one(has(/ (end|cancel|break|tear) /) ? { type: 'end_deal', deal: 'trade_deal', civ: cn } : { type: 'propose', deal: 'trade_deal', civ: cn });
@@ -2207,7 +2288,7 @@ function offlineScene(scene, text) {
     if (has(/ (no|refuse|cannot|never|away|dismiss|begone|not) /)) return { say: say('refuse'), choice: 'refuse', actions: [] };
     return { say: tier >= 2 ? 'Forgive me, I am a plain person. Will you grant it, promise to look into it, or refuse?' : 'Plain answers, if you please: will you grant it, promise it, or refuse?', actions: [] };
   }
-  if (has(/ (battle|battles|odds|fight|fighting) /) && has(/ (how|work|explain|decide|decided) /)) return { say: 'A battle is joined when an army marches into hostile ground. Count each side\'s strength: soldiers times their training, and for the defender also the ground, the walls and any bunkers. The larger share of the total usually wins, but never surely; I have seen a tenth of a host carry the day. Both sides always bleed. If we win we hold the ground; if we lose, our survivors fall back where they started.', actions: [] };
+  if (has(/ (battle|battles|odds|fight|fighting) /) && has(/ (how|work|explain|decide|decided) /)) return { say: 'A battle is joined when an army marches into hostile ground. Count each side\'s strength: soldiers, plus a tenth more for every level of experience they have earned in earlier battles, and for the defender also the ground, the walls and any bunkers. The larger share of the total usually wins, but never surely; I have seen a tenth of a host carry the day. Both sides always bleed. If we win we hold the ground; if we lose, our survivors fall back where they started.', actions: [] };
   const p = parseOffline(text);
   if (p && (p.actions.length || p.say)) return { say: p.actions.length ? 'At once.' : p.say, actions: p.actions };
   return { say: (scene.kind === 'general' ? warCounsel() : counsel()).join(' '), actions: [] };
@@ -2652,10 +2733,8 @@ const Art = (function () {
 
   /* ---------- top bar ---------- */
   function renderBar() {
-    const S = st(), me = S.civs[0], inc = Game.income(0);
+    const S = st(), me = S.civs[0];
     $('#realm').textContent = `${me.short} · Turn ${S.turn} · ${Game.seasonName()}`;
-    const pill = (label, v, d) => `<div class="pill"><b>${label}</b><span class="v num">${fmt(v)}</span>${d == null ? '' : `<span class="d num${d < 0 ? ' neg' : ''}">${sg(d)}</span>`}</div>`;
-    $('#res').innerHTML = pill('Money', me.res.money, inc.money) + pill('Food', me.res.food, inc.food) + pill('Materials', me.res.materials, inc.materials) + pill('Weapons', me.res.weapons, inc.weapons) + pill('Soldiers', Game.armyTotal(0), null);
     $('#btnEnd').disabled = busy || !!scene || !!S.over;
   }
 
@@ -2748,14 +2827,14 @@ const Art = (function () {
     const y = mine ? Game.terrYield(t) : { food: T.food, materials: T.materials, weapons: T.weapons, money: t.pop / 1000 * 20 * 0.055 * T.trade };
     const visible = mine || (own && Game.dip(0, own.id).pact);
     let army;
-    if (visible) army = `<p><b class="num">${fmt(t.army.n)}</b> ${Game.qualityLabel(t.army.q)} soldiers${t.army.b ? ', ' + Game.bunkerLabel(t.army.b) : ''}</p>` + (mine ? `<small>${t.army.b ? 'Cannot march while bunkered.' : fmt(t.army.n - t.army.fresh) + ' free to march this turn.'}</small>` : '');
+    if (visible) army = `<p><b class="num">${fmt(t.army.n)}</b> ${Game.qualityLabel(t.army.q)} soldiers, experience level ${Game.levelOf(t.army.q)}${t.army.b ? ', ' + Game.bunkerLabel(t.army.b) : ''}</p>` + (mine ? `<small>${t.army.b ? 'Cannot march while bunkered.' : fmt(t.army.n - t.army.fresh) + ' free to march this turn.'}</small>` : '');
     else if (t.intel) army = `<p>About <b class="num">${fmt(t.intel.n)}</b> soldiers${t.intel.b === 2 ? ', bunkered' : ''}</p><small>Scouts' count from turn ${t.intel.turn}${S.turn - t.intel.turn > 2 ? '; it may be stale' : ''}.</small>`;
     else army = '<p>Unknown</p><small>Send scouts to count the garrison.</small>';
     let opinion;
-    if (mine) opinion = `<div class="meter ${t.opinion < 35 ? 'bad' : t.opinion < 50 ? 'warn' : ''}"><i style="width:${t.opinion.toFixed(0)}%"></i></div><p><b class="num">${Math.round(t.opinion)}</b> of 100: the people are ${moodWord(t.opinion)}.</p>` + (t.unrest ? `<small class="neg">Unrest: ${t.unrest} angry season${t.unrest > 1 ? 's' : ''} in a row. Three below 30 and they revolt.</small>` : t.opinion < 30 ? '<small class="neg">Below 30. If this lasts three seasons they revolt.</small>' : '');
+    if (mine) opinion = `<div class="meter ${t.opinion < 35 ? 'bad' : t.opinion < 50 ? 'warn' : ''}"><i style="width:${t.opinion.toFixed(0)}%"></i></div><p><b class="num">${Math.round(t.opinion)}</b> of 100: the people are ${moodWord(t.opinion)}.</p>` + (t.unrest ? `<small class="neg">Unrest: ${t.unrest} angry season${t.unrest > 1 ? 's' : ''} in a row. ${Game.revoltLimit(t)} below 30 and they revolt.</small>` : t.opinion < 30 ? '<small class="neg">Below 30. If this lasts ' + Game.revoltLimit(t) + ' seasons they revolt.</small>' : '');
     else if (rebel) opinion = '<p>They have thrown off your rule and armed themselves. Only a battle will bring them back.</p>';
     else if (own) opinion = `<p>Under ${esc(own.short)}, the people seem ${moodWord(t.opinion)}.</p>`;
-    else opinion = '<p>They govern themselves and mean to keep it that way.</p>';
+    else opinion = '<p>They govern themselves and mean to keep it that way.</p>' + (t.folk && t.folk.known ? '<small class="neg">They have sworn never to join you. Only force will take this land.</small>' : `<small>Diplomats might win them over. They are short of ${Game.FOLK_WANT[t.terrain]}.</small>`);
     const nbs = t.nb.map(n => { const o = S.terr[n], os = Game.status(o); return `<button class="nb" type="button" data-sel="${n}">${swatch(os)}${esc(o.seen ? o.name : 'Unexplored')}</button>`; }).join('');
     const ideas = [];
     if (mine) {
@@ -2765,6 +2844,7 @@ const Art = (function () {
     } else {
       const from = t.nb.map(n => S.terr[n]).filter(o => o.owner === 0).sort((a, b) => b.army.n - a.army.n)[0];
       ideas.push(idea('Send scouts', `Send scouts to ${t.name}`));
+      if (from && s === 'free' && !(t.folk && t.folk.known)) ideas.push(idea('Send diplomats', `Send diplomats to ${t.name} offering 40 money and 20 ${Game.FOLK_WANT[t.terrain] === 'money' ? 'food' : Game.FOLK_WANT[t.terrain]}`));
       if (from && (t.owner < 0 || Game.dip(0, t.owner).war)) ideas.push(idea('Attack', `Attack ${t.name} from ${from.name} with all free soldiers`));
       if (own) ideas.push(idea(`Meet ${own.leader}`, `Request an audience with ${own.leader} of ${own.short}`));
     }
@@ -2793,7 +2873,7 @@ const Art = (function () {
     if (tab === 'realm') {
       const inc = Game.income(0), cls = v => v < 0 ? 'neg' : 'pos';
       const eff = { agriculture: '+12% food', education: '+4% everything', production: '+12% materials', military: '+15% weapons' };
-      el.innerHTML = `<div><h3>${esc(me.name)}</h3><p class="lore">${esc(Game.loreOf(0).join(' '))}</p><small>Famed for ${esc(me.lore.famed)}: +15% ${me.lore.res} from every territory.</small></div>
+      el.innerHTML = `<div><h3>${esc(me.name)}</h3><p class="lore">${esc(Game.loreOf(0).join(' '))}</p><small>Difficulty: ${Game.DIFF[S.diff].label}. Famed for ${esc(me.lore.famed)}: +15% ${me.lore.res} from every territory.</small></div>
         <div><h3>Treasury</h3><table class="led"><tr><th></th><th>In store</th><th>Each turn</th></tr>
           ${Game.RES.map(k => `<tr><td>${k.charAt(0).toUpperCase() + k.slice(1)}</td><td>${fmt(me.res[k])}</td><td class="${cls(inc[k])}">${sg(inc[k])}</td></tr>`).join('')}</table>
           <small>Includes ${sg(inc.tradeMoney)} money from trade agreements, ${sg(-inc.upkeepMoney)} money in soldiers' pay and ${sg(-inc.upkeepFood)} food in rations.</small></div>
@@ -2803,8 +2883,8 @@ const Art = (function () {
         <div><h3>Markets</h3><table class="led"><tr><th></th><th>Buy at</th><th>Sell at</th></tr>
           ${['food', 'materials', 'weapons'].map(k => `<tr><td>${k.charAt(0).toUpperCase() + k.slice(1)}</td><td>${Game.price(k, true, 0).toFixed(2)}</td><td>${Game.price(k, false, 0).toFixed(2)}</td></tr>`).join('')}</table>
           <small>Money per unit. Prices drift each turn and merchants haggle.</small></div>
-        <div><h3>Armies</h3><table class="led"><tr><th></th><th>Soldiers</th><th>Training</th></tr>
-          ${Game.owned(0).map(t => `<tr><td><button class="nb" type="button" data-sel="${t.id}">${esc(t.name)}${me.capital === t.id ? ' ★' : ''}</button></td><td>${t.army.b === 2 ? '[' + fmt(t.army.n) + ']' : fmt(t.army.n)}</td><td>${Game.qualityLabel(t.army.q)}</td></tr>`).join('')}</table>
+        <div><h3>Armies</h3><table class="led"><tr><th></th><th>Soldiers</th><th>Experience</th></tr>
+          ${Game.owned(0).map(t => `<tr><td><button class="nb" type="button" data-sel="${t.id}">${esc(t.name)}${me.capital === t.id ? ' ★' : ''}</button></td><td>${t.army.b === 2 ? '[' + fmt(t.army.n) + ']' : fmt(t.army.n)}</td><td>${Game.levelOf(t.army.q)} · ${Game.qualityLabel(t.army.q)}</td></tr>`).join('')}</table>
           <small>100 recruits cost ${Game.COST.recruitW} weapons and ${Game.COST.recruitM} materials. Every 100 soldiers eat 1 food and draw 0.4 money a turn.</small></div>
         <div><h3>Meeting</h3><p class="hint">Talking costs nothing.</p>
           <div class="row" style="margin-top:6px"><button class="btn" type="button" data-meet='{"kind":"advisor"}'>Advisor</button><button class="btn" type="button" data-meet='{"kind":"general"}'>Commander</button><button class="btn" type="button" data-meet='{"kind":"citizen","terr":${S.terr[sel] && S.terr[sel].owner === 0 ? sel : me.capital}}'>Citizens</button></div></div>`;
@@ -2857,7 +2937,9 @@ const Art = (function () {
     else out.push(idea('Explore', 'Send an expedition to explore beyond our borders'));
     $('#ideas').innerHTML = '<em>Ideas:</em>' + out.slice(0, 4).join('') + '<button class="idea" type="button" data-cmds>All commands</button>';
   }
-  function renderAll() { renderBar(); renderMap(); renderSheet(); renderLedger(); renderLog(); renderIdeas(); }
+  function renderAll() {
+    if (EDITION === 'web') $('#cmdText').placeholder = 'Type a command, e.g. "recruit 200 in ' + st().terr[st().civs[0].capital].name + '". Press All commands for the list.';
+    renderBar(); renderMap(); renderSheet(); renderLedger(); renderLog(); renderIdeas(); }
 
   /* ---------- orders ---------- */
   function run(actions, sc) {
@@ -3015,25 +3097,30 @@ const Art = (function () {
       G('Realm', ['taxes to 25', 'invest in agriculture', 'invest in production', 'invest in military', 'invest in education', 'buy 30 food', 'sell 20 materials', `hold a festival in ${cap.name}`, `move capital to ${other.name}`]) +
       G('Armies', [`recruit 300 in ${cap.name}`, `train ${cap.name}`, `move 200 from ${cap.name} to ${other.name}`, nbr ? `attack ${nbr.name} from ${from.name} with 500` : 'attack a neighbouring territory from one of yours', `bunker ${cap.name}`, `leave bunkers ${cap.name}`]) +
       G('Scouts and Spies', ['explore', nbr ? `scout ${nbr.name}` : 'scout a neighbouring territory', `scout ${cn}`, `spy on ${cn}`]) +
-      G('Diplomacy', [`meet ${cn}`, `trade agreement with ${cn}`, `pact with ${cn}`, `gift 30 money to ${cn}`, `declare war on ${cn}`, `propose peace to ${cn}`, `end trade agreement with ${cn}`]) +
+      G('Diplomacy', [`meet ${cn}`, `trade agreement with ${cn}`, `pact with ${cn}`, `gift 30 money to ${cn}`, nbr && nbr.owner < 0 ? `send diplomats to ${nbr.name} offering 40 money and 20 food` : 'send diplomats to a free territory offering 40 money', `declare war on ${cn}`, `propose peace to ${cn}`, `end trade agreement with ${cn}`]) +
       G('Meeting', ['talk to my advisor', 'talk to my commander', `visit citizens of ${cap.name}`]) +
       G('Turn', ['end turn']) + `<div class="row"><button class="btn primary" type="button" data-close>Back to the map</button></div>`);
   }
-  function showHelp() {
-    modal(`<h2 id="mTitle">How to play</h2>
-      <p>You rule a small realm on a wide continent of 75 territories. Drag the map to move it, scroll or pinch to zoom. Each turn your territories yield money, food, materials and weapons. Spend them as you like, talk to whoever you like, then press <b>End turn</b> and the other courts make their moves.</p>
+  const LOGO = `<svg class="logo" viewBox="0 0 120 124" aria-hidden="true"><g transform="rotate(-42 60 72)"><path d="M56 30L60 14L64 30V92H56Z" fill="#c9d0d4" stroke="#525a61" stroke-width="2" stroke-linejoin="round"/><path d="M60 24V90" stroke="#8a949b" stroke-width="1.6"/><rect x="43" y="91" width="34" height="7" rx="3" fill="#d4a94a" stroke="#7a5d1c" stroke-width="2"/><rect x="56.5" y="98" width="7" height="14" fill="#6b4a2e" stroke="#3f2a18" stroke-width="1.5"/><circle cx="60" cy="116" r="5" fill="#d4a94a" stroke="#7a5d1c" stroke-width="2"/></g><g transform="rotate(42 60 72)"><path d="M56 30L60 14L64 30V92H56Z" fill="#c9d0d4" stroke="#525a61" stroke-width="2" stroke-linejoin="round"/><path d="M60 24V90" stroke="#8a949b" stroke-width="1.6"/><rect x="43" y="91" width="34" height="7" rx="3" fill="#d4a94a" stroke="#7a5d1c" stroke-width="2"/><rect x="56.5" y="98" width="7" height="14" fill="#6b4a2e" stroke="#3f2a18" stroke-width="1.5"/><circle cx="60" cy="116" r="5" fill="#d4a94a" stroke="#7a5d1c" stroke-width="2"/></g><path d="M40 38L35 12L49 24L60 6L71 24L85 12L80 38Z" fill="#d4a94a" stroke="#7a5d1c" stroke-width="2.5" stroke-linejoin="round"/><rect x="39" y="37" width="42" height="9" rx="2" fill="#e3bd62" stroke="#7a5d1c" stroke-width="2.5"/><circle cx="60" cy="41.500" r="3" fill="#a8323a"/><circle cx="48" cy="41.500" r="2.200" fill="#2f6f8f"/><circle cx="72" cy="41.500" r="2.200" fill="#2f6f8f"/><circle cx="35" cy="12" r="3" fill="#e3bd62" stroke="#7a5d1c" stroke-width="1.5"/><circle cx="60" cy="6" r="3" fill="#e3bd62" stroke="#7a5d1c" stroke-width="1.5"/><circle cx="85" cy="12" r="3" fill="#e3bd62" stroke="#7a5d1c" stroke-width="1.5"/></svg>`;
+  function showHelp(first) {
+    modal(`<div class="hero">${LOGO}<h2 id="mTitle">Crown <i>&amp;</i> Conquest</h2><div class="tagline">How to play</div></div>
+      <p>Welcome to Crown &amp; Conquest! This is a turn-based strategy game set in a fictional medieval world.</p>
+      <p>The objective of the game is to expand your kingdom through a combination of trade, diplomacy, and war. Think of it as a crossover between Catan and Risk.</p>
+      <p>You start as the ruler of a small kingdom on a wide continent. Drag the map to move it, scroll or pinch to zoom. Each turn your territories yield money, food, materials and weapons. Spend them as you like, talk to whoever you like, then press <b>End turn</b> and the other kingdoms (controlled by the computer) will make their moves.</p>
       ${EDITION === 'web' ? `<h3>Giving orders</h3>
       <p>Type short commands in the Chronicle box, such as "recruit 300 in ${esc(st().terr[st().civs[0].capital].name)}" or "invest in agriculture", and press Enter. The <b>All commands</b> button under the Chronicle lists every command with examples you can click. Clicking a territory also offers ready-made orders. In an audience, answer with the suggested replies or a few plain words such as "yes", "no", "trade agreement", "pact", "peace" or "gift 30 money". Everything said to you is kept in the Chronicle so you can scroll back and reread it.</p>` : `<h3>Just write what you want</h3>
       <p>There are no menus of choices. Type orders in the Chronicle box the way you would tell a game master. Everything said to you, including your advisor's counsel, is kept in the Chronicle so you can scroll back and reread it. For example: "Raise 300 soldiers in the capital and send scouts north", "Throw a feast for the miners", "Offer the Doge grain for iron". Inside an audience, simply speak to the person.</p>`}
       <h3>Your realm</h3>
       <ul><li><b>Taxes</b> bring money but slow food production and anger people.</li><li><b>Investments</b> cost money and raise output for good: agriculture (food), production (materials), military (weapons), education (a little of everything).</li><li><b>Soldiers</b> cost weapons and materials to raise, then food and pay every turn. Training makes each one count for more.</li><li><b>Opinion</b> in each territory drives its yields. If it stays below 30 for three turns running, the peasants revolt: the territory turns hostile and you must win it back in battle.</li><li><b>Fortune</b> takes a hand now and then: festivals, fires, bumper harvests, fevers and windfalls.</li><li>The <b>market</b> buys and sells food, materials and weapons at shifting prices.</li></ul>
       <h3>War</h3>
-      <ul><li>A battle happens when an army marches into a neighbouring territory held by an enemy or by free folk. The chance of winning follows your share of the combined strength (numbers × training); the bigger force usually wins, and the underdog always keeps a small chance.</li><li>Both sides always lose soldiers. If the attacker wins, they take the territory; if not, they fall back.</li><li><b>Bunkering down</b> takes a full turn and then makes defenders much harder to beat, but a bunkered army cannot march until it spends a turn breaking camp.</li><li><b>Scouts</b> count enemy garrisons. <b>Spies</b> report where a rival plans to strike next, but they are sometimes caught and sometimes wrong.</li><li>If your <b>capital</b> falls, the enemy loots your treasury. You can move the court somewhere safer.</li></ul>
+      <ul><li>A battle happens when an army marches into a neighbouring territory held by an enemy or by free folk. The chance of winning follows your share of the combined strength; the bigger force usually wins, and the underdog always keeps a small chance.</li><li><b>Experience</b> wins battles. Every army has a level: the number of battles its soldiers have fought. Level 0 is inexperienced, 1 to 2 well-drilled, 3 to 5 veteran, 6 and above legendary, and each level makes the army 10% stronger. Survivors of a battle, win or lose, gain a level. Fresh recruits and reinforcements dilute it, because the level is averaged over everyone in the army. Drill can lift an inexperienced army to level 1, no further.</li><li>Both sides always lose soldiers. If the attacker wins, they take the territory; if not, they fall back.</li><li><b>Bunkering down</b> takes a full turn and then makes defenders much harder to beat, but a bunkered army cannot march until it spends a turn breaking camp.</li><li><b>Scouts</b> count enemy garrisons. <b>Spies</b> report where a rival plans to strike next, but they are sometimes caught and sometimes wrong.</li><li>If your <b>capital</b> falls, the enemy loots your treasury. You can move the court somewhere safer.</li></ul>
       <h3>Diplomacy</h3>
-      <ul><li>Every realm has its own lore, different each game: what it is famed for, its faith, and its old friends and enemies. Read it under Courts; it shapes how rulers treat you and each other.</li><li>Meet other rulers to bargain, flatter, threaten or trade. They remember how you treat them.</li><li>Free folk watch what you do. Conquer one free town and its neighbours may arm, strike back at you, or send an elder asking to join you in peace.</li><li>A <b>trade agreement</b> earns both sides money every turn. A <b>military pact</b> makes you allies: you are expected to fight for each other.</li><li>Breaking your word costs you trust with every court.</li></ul>
+      <ul><li>Every realm has its own lore, different each game: what it is famed for, its faith, and its old friends and enemies. Read it under Courts; it shapes how rulers treat you and each other.</li><li>Meet other rulers to bargain, flatter, threaten or trade. They remember how you treat them.</li><li><b>Diplomats</b> can ask a free territory on your border to join you peacefully. Offer money, food, materials or weapons. If the elders agree, their fighters become your soldiers. If they refuse, they say why: some can be won with a better offer, and some will never agree and must be taken by force.</li><li>Free folk watch what you do. Conquer one free town and its neighbours may arm, strike back at you, or send an elder asking to join you in peace.</li><li>A <b>trade agreement</b> earns both sides money every turn. A <b>military pact</b> makes you allies: you are expected to fight for each other.</li><li>Breaking your word costs you trust with every court.</li></ul>
+      <h3>Difficulty</h3>
+      <p>Choose Squire, Knight or Lord when you start a new game. Harder settings make improvements cost more, neighbours more aggressive, bargains harder to strike, and fires, fevers and revolts more likely. Battles follow the same rules on every setting.</p>
       <h3>Winning</h3>
       <p>Hold every territory in the world yourself, or together with rulers who share a military pact with you. Lose your last territory and your story ends.</p>
-      <div class="row"><button class="btn primary" type="button" data-close>Back to the map</button></div>`);
+      <div class="row">${first ? '<button class="btn primary" type="button" data-setup>Set up my kingdom</button><button class="btn" type="button" data-close>Start playing</button>' : '<button class="btn primary" type="button" data-close>Back to the map</button>'}</div>`);
   }
   const COLORS = [['Gold', '#d4a94a'], ['Crimson', '#d9596a'], ['Amber', '#e08a3c'], ['Rose', '#e08ab4'], ['Violet', '#a882dc'], ['Sapphire', '#5f8fe6'], ['Turquoise', '#3fc4c0'], ['Emerald', '#4cc46e'], ['Ivory', '#e9e3d0'], ['Slate', '#9fb0c4']];
   /* Any colour is allowed, but one too dark to read map labels on is lightened until it is not. */
@@ -3055,7 +3142,10 @@ const Art = (function () {
         ${COLORS.map(c => `<label class="pickc"><input type="radio" name="nColor" value="${c[1]}"${(me && me.color ? me.color : '#d4a94a') === c[1] ? ' checked' : ''}><span style="background:${c[1]}"></span>${c[0]}</label>`).join('')}
         <label class="pickc"><input type="radio" name="nColor" value="custom"${me && me.color && !COLORS.some(c => c[1] === me.color) ? ' checked' : ''}><input type="color" id="nCustom" value="${esc(me && me.color ? me.color : '#d4a94a')}" aria-label="Pick your own colour">Your own</label>
       </fieldset>
-      <p class="hint">Enemies are always shown striped in red, so any colour stays easy to tell apart. Very dark colours are lightened a little so the map's lettering stays readable.</p>
+      <fieldset class="colors diffs"><legend>Difficulty</legend>
+        ${[['squire', 'Cheaper improvements, calmer neighbours, easier bargains, fewer disasters.'], ['knight', 'The standard game.'], ['lord', 'Dearer improvements, aggressive neighbours, hard bargains, more disasters and revolts.']].map(d => `<label class="pickc"><input type="radio" name="nDiff" value="${d[0]}"${((st() && st().diff) || 'knight') === d[0] ? ' checked' : ''}><b>${Game.DIFF[d[0]].label}</b><span style="all:unset">${d[1]}</span></label>`).join('')}
+      </fieldset>
+      <p class="hint">Battles follow the same rules on every difficulty. Enemies are always shown striped in red, so any colour stays easy to tell apart. Very dark colours are lightened a little so the map's lettering stays readable.</p>
       <div class="row"><button class="btn primary" type="submit">Start</button><button class="btn" type="button" data-close>Cancel</button></div></form>`);
   }
   function showOver() {
@@ -3096,7 +3186,8 @@ const Art = (function () {
     if (q('[data-new]')) { showNew(false); return; }
     if (q('#scClose')) { closeScene(); return; }
     if (q('#btnEnd')) { endTurn(); return; }
-    if (q('#btnHelp')) { showHelp(); return; }
+    if (q('#btnHelp')) { showHelp(false); return; }
+    if (q('[data-setup]')) { showNew(true); return; }
     if (q('#btnNew')) { showNew(false); return; }
   });
   document.addEventListener('submit', e => {
@@ -3105,9 +3196,10 @@ const Art = (function () {
     else if (e.target.id === 'scForm') { const ta = $('#scText'), v = ta.value; ta.value = ''; sceneSay(v); }
     else if (e.target.id === 'newForm') {
       const realm = $('#nRealm').value, ruler = $('#nRuler').value, picked = document.querySelector('input[name="nColor"]:checked');
+      const dsel = document.querySelector('input[name="nDiff"]:checked'), diff = dsel ? dsel.value : 'knight';
       const color = readable(picked ? (picked.value === 'custom' ? $('#nCustom').value : picked.value) : '#d4a94a');
       closeModal(); scene = null; sceneQueue.length = 0; renderScene();
-      Game.newGame({ realm, ruler, color }); intro(); sel = st().civs[0].capital; save(); applyColor(); renderAll(); homeView();
+      Game.newGame({ realm, ruler, color, diff }); intro(); sel = st().civs[0].capital; save(); applyColor(); renderAll(); homeView();
     }
   });
   document.addEventListener('keydown', e => {
@@ -3191,9 +3283,9 @@ const Art = (function () {
     if (!ok) { Game.newGame({}); intro(); }
     sel = st().civs[0].capital;
     applyColor(); renderAll(); homeView(); soundLabels();
-    if (EDITION === 'web') $('#cmdText').placeholder = 'Type a command, e.g. "recruit 200 in ' + st().terr[st().civs[0].capital].name + '". Press All commands for the list.';
     Story.aiReady.then(() => { renderLog(); renderIdeas(); });
     if (st().over) showOver(); else nextScene();
+    if (!pf.seenHelp && !st().over && !scene) { showHelp(true); setPref('seenHelp', true); }
   }
   const hot = window.claude && window.claude.hot;
   if (hot && hot.snapshot) hot.snapshot(() => Game.state);
